@@ -16,8 +16,8 @@ export const EventForm = () => {
         provide some default values.
     */
     const [currentEvent, setCurrentEvent] = useState({
-        artist: 0,
-        venue_id: 0,
+        artistId: 0,
+        venueId: 0,
         notes: "",
         date: "",
         time: "",
@@ -41,8 +41,8 @@ export const EventForm = () => {
         e.preventDefault()
 
         const event = {
-            artist: currentEvent.artist,
-            venue_id: currentEvent.venue.id,
+            artistId: currentEvent.artist.id,
+            venueId: currentEvent.venue.id,
             notes: currentEvent.notes,
             date: currentEvent.date,
             time: currentEvent.time
@@ -63,16 +63,16 @@ export const EventForm = () => {
                         onChange={changeEventState}
                     >
                         {
-                            venues.map(v => <option key={v.id} value={g.id}>{g.label}</option>)
+                            venues.map(v => <option key={v.id} value={v.id}>{v.name}</option>)
                         }
                     </select>
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Description: </label>
-                    <input type="text" name="description" required className="form-control"
-                        value={currentEvent.description}
+                    <label htmlFor="description">Notes: </label>
+                    <input type="text" name="notes" required className="form-control"
+                        value={currentEvent.notes}
                         onChange={changeEventState}
                     />
                 </div>
@@ -95,7 +95,7 @@ export const EventForm = () => {
                     />
                 </div>
             </fieldset>
-            <fieldset>
+            {/* <fieldset>
                 <div className="form-group">
                     <label htmlFor="organizer">Organizer:</label>
                     <select name="organizer" required className="form-control"
@@ -107,7 +107,7 @@ export const EventForm = () => {
                         }
                     </select>
                 </div>
-            </fieldset>
+            </fieldset> */}
 
             {/* TODO: create the rest of the input fields */}
 
