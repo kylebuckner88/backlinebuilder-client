@@ -1,23 +1,36 @@
 import React, { useEffect, useState } from "react"
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { getVenues } from "./VenueManager.js"
 import { VenueCard } from "./VenueCard.js"
-// import "./Venue.css"
+import { getVenueByLocation } from "./VenueManager"
+
 
 export const VenueList = (props) => {
-    const [ venues, setVenues ] = useState([]);
+    const [ venues, setVenues ] = useState([])
+    const [ getVenueGearList, setVenueGearList ] = useState([])
     const history = useHistory()
+    const {locationId} = useParams();
+        
+
+
+    // useEffect(() => {
+    //     getVenues().then(data => setVenues(data))
+    // }, [])
 
     useEffect(() => {
-        getVenues().then(data => setVenues(data))
+        getVenueByLocation(locationId).then(data => setVenues(data))
     }, [])
+
+
+
+
 
 
     return (
         <article className="venues">
-        <h2>Venues</h2>
+            <h2>Venues</h2>
             {venues.map(venue => 
-                <VenueCard
+               <VenueCard
                 key={venue.id}
                 venue={venue}
                 />

@@ -8,7 +8,7 @@ export const UpdateEventForm = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [ event, setEvent ] = useState({
         artist: 0,
-        venueId: 0,
+        venue: 0,
         notes: "",
         date: "",
         time: ""
@@ -40,7 +40,7 @@ export const UpdateEventForm = () => {
         
         <>
         <form className="eventForm">
-            <h2 className="eventForm__title">Update {event.venue.name} event</h2>
+            <h2 className="eventForm__title">Update event</h2>
 
             <fieldset>
                 <div className="form-group">
@@ -88,15 +88,16 @@ export const UpdateEventForm = () => {
                     // Changing to snake case to match back end
                     const editedEvent = {
                         id: event.id,
-                        artist: event.artist,
-                        venueId: event.venue.id,
                         notes: event.notes,
                         date: event.date,
-                        time: event.time
+                        time: event.time,
+                        venue: parseInt(event.venue.id),
+                        artist: parseInt(event.artist.id)
+
                         
                     }
 
-                    // Send POST request to your API
+                   
                     updateEvent(editedEvent)
                         .then(() => history.push('/events'))
                 }}

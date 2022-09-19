@@ -1,119 +1,125 @@
 import React, { useState, useEffect } from "react"
-import { useHistory } from "react-router-dom"
-import { createEvent, getEvents } from "./EventManager"
-import { getVenues } from "../venue/VenueManager"
+import { useHistory } from 'react-router-dom'
+import { createEvent  } from './EventManager.js'
+import { getVenues } from './../venue/VenueManager.js'
 
 
 export const EventForm = () => {
     const history = useHistory()
-    const [events, setEvents] = useState([])
-    const [venues, setVenues] =  useState([])
+    const [venues, setVenues ] = useState([])
 
-
-    /*
-        Since the input fields are bound to the values of
-        the properties of this state variable, you need to
-        provide some default values.
-    */
+    
     const [currentEvent, setCurrentEvent] = useState({
-        artistId: 0,
         venueId: 0,
         notes: "",
         date: "",
-        time: "",
+        time: ""
     })
 
-    useEffect(() => {
-        getEvents().then(setEvents)
-    }, [])
-
-    useEffect(() => {
-        getVenues().then(setVenues)
-    })
-
-    const changeEventState = (domEvent) => {
-        const newEventState = {...currentEvent}
-        newEventState[domEvent.target.name] = domEvent.target.value
-        setCurrentEvent(newEventState)
+    const getVenueList = () => {
+        return getVenues().then(data => {
+            setVenues(data)
+        })
     }
 
-    const handleSubmit = e => {
-        e.preventDefault()
+    useEffect(() => {
+        getVenueList()
+    }, [])
 
-        const event = {
-            artistId: currentEvent.artist.id,
-            venueId: currentEvent.venue.id,
-            notes: currentEvent.notes,
-            date: currentEvent.date,
-            time: currentEvent.time
-        }
 
-        createEvent(event)
-            .then(() => history.push("/events"))
+
+    const changeEventState = (domEvent) => {
+        const newEvent = {...currentEvent}
+        let selectedVal = domEvent.target.value
+        newEvent[domEvent.target.name] = selectedVal
+        setCurrentEvent(newEvent)
     }
 
     return (
         <form className="eventForm">
-            <h2 className="eventForm__title">Create Event:</h2>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="venueId">Venue:</label>
-                    <select name="venueId" required className="form-control"
-                        value={currentEvent.venueId}
-                        onChange={changeEventState}
-                    >
-                        {
-                            venues.map(v => <option key={v.id} value={v.id}>{v.name}</option>)
-                        }
-                    </select>
-                </div>
+            <h2 className="eventForm__title">Create Event</h2>
+            <fieldset>     
+                <select 
+                    className="form-control"
+                    name="venueId" 
+                    id="venueId"
+                    required 
+                    value={currentEvent.venueId}
+                    onChange={changeEventState} >
+                    <option value="0">Please select ...</option>
+                        {venues.map(
+                            venue => (<option key={venue.id} value={venue.id}>{venue.name}</option>)
+                        )}
+                </select>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Notes: </label>
-                    <input type="text" name="notes" required className="form-control"
+                    <label htmlFor="maker">Notes </label>
+                    <input
+                        type="text" 
+                        name="notes" 
+                        id="notes"
+                        required 
+                        className="form-control"
                         value={currentEvent.notes}
                         onChange={changeEventState}
                     />
                 </div>
             </fieldset>
+
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="date">Date:</label>
-                    <input type="date" name="date" required autoFocus className="form-control"
+                    <label htmlFor="numberOfPlayers">Date </label>
+                    <input 
+                        type="date" 
+                        name="date" 
+                        id="date"
+                        required 
+                        className="form-control"
                         value={currentEvent.date}
                         onChange={changeEventState}
                     />
                 </div>
             </fieldset>
+
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="time">Time:</label>
-                    <input type="time" name="time" required autoFocus className="form-control"
+                    <label htmlFor="skillLevel">Time </label>
+                    <input 
+                        type="time" 
+                        name="time" 
+                        id="time"
+                        required 
+                        className="form-control"
                         value={currentEvent.time}
                         onChange={changeEventState}
                     />
                 </div>
             </fieldset>
-            {/* <fieldset>
-                <div className="form-group">
-                    <label htmlFor="organizer">Organizer:</label>
-                    <select name="organizer" required className="form-control"
-                        value={currentEvent.organizer.id}
-                        onChange={changeEventState}
-                    >
-                        {
-                            events.map(e => <option key={e.id} value={e.id}>{e.label}</option>)
-                        }
-                    </select>
-                </div>
-            </fieldset> */}
 
-            {/* TODO: create the rest of the input fields */}
 
             <button type="submit"
-                onClick={handleSubmit}
-                className="btn btn-primary">Create</button>
+                onClick={evt => {
+                
+                    evt.preventDefault()
+
+                    const newEvent = {
+                        id: currentEvent.id,
+                        venue: parseInt(currentEvent.venueId),
+                        notes: currentEvent.notes,
+                        date: currentEvent.date,
+                        time: currentEvent.time
+                    }
+
+                  
+                    createEvent(newEvent)
+                        .then(() => history.push("/events"))
+                }}
+                className="btn btn-primary" 
+                id="createBtn">Create</button>
         </form>
     )
 }
+    
+                  
+                       
