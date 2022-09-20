@@ -22,10 +22,18 @@ export const EventCard = ({ event, delEvent }) => {
             className="cardBtn"
             onClick={() => {
                 delEvent(event.id)
-
-            }}>
-        Delete
+            }}>Delete
         </button>
+        {/* <button type="submit"
+                onClick={evt => {
+                    evt.preventDefault()
+                    console.log(venue.id)
+                    getVenueGearById(venue.id)
+                        .then(() => history.push(`/venuegearlist/${venue.id}`))
+                    }}
+                    className="btn btn=primary"
+                    id="createBtn">View Available Gear
+            </button> */}
     </div>
     </section>
     </div>

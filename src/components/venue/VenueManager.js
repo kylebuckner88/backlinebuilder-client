@@ -21,6 +21,8 @@ export const getVenueById = (locationId) => {
         .then(response => response.json())
 }
 
+
+
 export const getVenueByLocation = (locationId) => {
     return fetch(`${remoteURL}/venues?location=${locationId}`, {
         headers:{
