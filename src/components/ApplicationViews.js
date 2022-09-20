@@ -12,7 +12,7 @@ export const ApplicationViews = () => {
         <Route exact path="/events">
             <EventList />
         </Route>
-        <Route exact path="/events/new">
+        <Route exact path="/events/:venueId(\d+)/new">
             <EventForm />
         </Route>
         <Route exact path="/events/:eventId(\d+)/update">

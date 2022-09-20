@@ -10,6 +10,7 @@ export const getEvents = () => {
 }
 
 export const createEvent = (event) => {
+    console.log("event", event)
     return fetch(`${remoteURL}/events`, { 
         method: "POST",
         headers:{

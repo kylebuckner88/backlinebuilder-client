@@ -9,7 +9,6 @@ export const VenueCard = ({ venue }) => {
 
     return (
     <section key={`venue--${venue.id}`} className="venue">
-        <div className="venue__id">{venue.id}</div>
         <div className="venue__name">{venue.name}</div>
         <div className="venue__address"> {venue.address}</div>
         {/* <button>View Available Gear</button> */}

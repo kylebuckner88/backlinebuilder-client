@@ -7,7 +7,6 @@ import { getVenueByLocation } from "./VenueManager"
 
 export const VenueList = (props) => {
     const [ venues, setVenues ] = useState([])
-    const [ getVenueGearList, setVenueGearList ] = useState([])
     const history = useHistory()
     const {locationId} = useParams();
         

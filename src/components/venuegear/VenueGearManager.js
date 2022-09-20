@@ -10,30 +10,25 @@ export const getVenueGearList = () => {
         .then(response => response.json())
 }
 
-export const getGearList = () => {
-    return fetch("http://localhost:8000/gearlist", {
-        headers:{
-            "Authorization": `Token ${localStorage.getItem("lu_token")}`
-        }
-    })
-        .then(response => response.json())
-}
 
-export const getGearTypes = () => {
-    return fetch("http://localhost:8000/gearlist?=types", { 
+export const getVenueGearByVenue = (venueId) => {
+    console.log("venueId", venueId)
+    return fetch(`${remoteURL}/venuegearlist?venue=${venueId}`, {
         headers:{
-            "Authorization": `Token ${localStorage.getItem("lu_token")}`
-        }
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+            "Content-Type": "application/json"
+        } 
     })
         .then(response => response.json())
 }
 
 export const getVenueGearById = (venueId) => {
+    console.log("venueId", venueId)
     return fetch(`${remoteURL}/venuegearlist/${venueId}`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("lu_token")}`,
             "Content-Type": "application/json"
-        } 
+        }
     })
         .then(response => response.json())
 }

@@ -21,11 +21,6 @@ export const EventList = (props) => {
     return (
         <article className="events">
             <h2>Events</h2>
-            <button className="btn" id="createEventBtn"
-                onClick={() => {
-                    history.push({ pathname: "/events/new" })
-                }}
-            >Create New Event</button>
             {events.map(event => 
                 
                 <EventCard

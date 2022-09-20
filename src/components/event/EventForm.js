@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react"
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { createEvent  } from './EventManager.js'
-import { getVenues } from './../venue/VenueManager.js'
+import { getVenues, getVenueById } from './../venue/VenueManager.js'
 
 
 export const EventForm = () => {
     const history = useHistory()
-    const [venues, setVenues ] = useState([])
+    const [venue, setVenue ] = useState([])
+    const {venueId} = useParams();
 
     
     const [currentEvent, setCurrentEvent] = useState({
-        venueId: 0,
+        
+        venue_id: 0,
         notes: "",
         date: "",
         time: ""
     })
 
-    const getVenueList = () => {
-        return getVenues().then(data => {
-            setVenues(data)
+    const getVenueName = () => {
+         return getVenueById(venueId).then(data => {
+            setVenue(data)
         })
     }
 
     useEffect(() => {
-        getVenueList()
+        getVenueName()
     }, [])
 
 
@@ -38,20 +40,6 @@ export const EventForm = () => {
     return (
         <form className="eventForm">
             <h2 className="eventForm__title">Create Event</h2>
-            <fieldset>     
-                <select 
-                    className="form-control"
-                    name="venueId" 
-                    id="venueId"
-                    required 
-                    value={currentEvent.venueId}
-                    onChange={changeEventState} >
-                    <option value="0">Please select ...</option>
-                        {venues.map(
-                            venue => (<option key={venue.id} value={venue.id}>{venue.name}</option>)
-                        )}
-                </select>
-            </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="maker">Notes </label>
@@ -104,8 +92,7 @@ export const EventForm = () => {
                     evt.preventDefault()
 
                     const newEvent = {
-                        id: currentEvent.id,
-                        venue: parseInt(currentEvent.venueId),
+                        venue: parseInt(venueId),
                         notes: currentEvent.notes,
                         date: currentEvent.date,
                         time: currentEvent.time
