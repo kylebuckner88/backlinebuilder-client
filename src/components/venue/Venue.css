@@ -1,0 +1,49 @@
+section.venue-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 5rem;;
+
+}
+
+ h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 50pt;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+section.venue {
+    background-color: #f3e9e7;
+    border: .35rem solid #050401;
+    border-radius: 30px;
+    width: 20rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: #050401;
+}
+
+h3#venue-card-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18pt;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 0rem;
+}
+
+button#gearBtn {
+    align-items: center;
+    justify-content: center;
+    margin-left: 0rem;
+    font-size: 12pt;
+    margin-top: 20px;
+}

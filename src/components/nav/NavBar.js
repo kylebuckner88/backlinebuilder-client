@@ -6,18 +6,21 @@ export const NavBar = () => {
     const history = useHistory()
     return (
         <ul className="navbar">
-            <li className="navbar__item">
+            <div className="navbar__item">
             <Link to="/events">My Events</Link>
+            </div>
+            <li className="navbar__item">
+            <Link to="/locations">New Event</Link>
             </li>
             {
                 (localStorage.getItem("lu_token") !== null) ?
                     <li className="nav-item">
-                        <button className="nav-link fakeLink"
+                        <li className="navbar__item"
                             onClick={() => {
                                 localStorage.removeItem("lu_token")
                                 history.push({ pathname: "/" })
                             }}
-                        >Logout</button>
+                        >Logout</li>
                     </li> :
                     <>
                         <li className="nav-item">

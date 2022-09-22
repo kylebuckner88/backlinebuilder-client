@@ -1,0 +1,35 @@
+form.eventForm {
+    background-color: #f3e9e7;
+    border: .35rem solid #050401;
+    border-radius: 30px;
+    width: 50rem;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-left: 15rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: #050401;
+}
+
+div.eventform-group {
+    width: 25rem;
+}
+input.eventform-control {
+    width: 25rem;
+    justify-content: center;
+    align-content: center;
+    height: 2rem;
+}
+
+#createBtn {
+    align-items: center;
+    justify-content: center;
+    margin-left: 0rem;
+    font-size: 22pt;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

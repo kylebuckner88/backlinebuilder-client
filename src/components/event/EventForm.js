@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
 import { createEvent  } from './EventManager.js'
 import { getVenues, getVenueById } from './../venue/VenueManager.js'
+import "./Event.css"
 
 
 export const EventForm = () => {
@@ -41,14 +42,14 @@ export const EventForm = () => {
         <form className="eventForm">
             <h2 className="eventForm__title">Create Event</h2>
             <fieldset>
-                <div className="form-group">
-                    <label htmlFor="maker">Notes </label>
+                <div className="eventform-group">
+                    <label htmlFor="notes">Notes </label>
                     <input
                         type="text" 
                         name="notes" 
                         id="notes"
                         required 
-                        className="form-control"
+                        className="eventform-control"
                         value={currentEvent.notes}
                         onChange={changeEventState}
                     />
@@ -56,14 +57,14 @@ export const EventForm = () => {
             </fieldset>
 
             <fieldset>
-                <div className="form-group">
-                    <label htmlFor="numberOfPlayers">Date </label>
+                <div className="eventform-group">
+                    <label htmlFor="date">Date </label>
                     <input 
                         type="date" 
                         name="date" 
                         id="date"
                         required 
-                        className="form-control"
+                        className="eventform-control"
                         value={currentEvent.date}
                         onChange={changeEventState}
                     />
@@ -71,14 +72,14 @@ export const EventForm = () => {
             </fieldset>
 
             <fieldset>
-                <div className="form-group">
-                    <label htmlFor="skillLevel">Time </label>
+                <div className="eventform-group">
+                    <label htmlFor="time">Time </label>
                     <input 
                         type="time" 
                         name="time" 
                         id="time"
                         required 
-                        className="form-control"
+                        className="eventform-control"
                         value={currentEvent.time}
                         onChange={changeEventState}
                     />
@@ -102,7 +103,7 @@ export const EventForm = () => {
                     createEvent(newEvent)
                         .then(() => history.push("/events"))
                 }}
-                className="btn btn-primary" 
+                className="createEvent-btn" 
                 id="createBtn">Create</button>
         </form>
     )

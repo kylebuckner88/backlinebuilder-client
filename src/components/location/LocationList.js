@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
 import { getVenueById, getVenueByLocation } from "../venue/VenueManager"
 import { getLocationById, getLocations} from "./LocationManager"
+import "./Location.css"
 
 export const LocationList = (props) => {
     const history = useHistory()
@@ -36,11 +37,14 @@ export const LocationList = (props) => {
         
         
 
-
-        <div className="locationForm">
-            <h2 className="locationForm__title">Where are you playing?</h2>
+        <div className="home">
+            <div className="home-content">
+                <h1>Backline Builder</h1>
+                <h2>Connecting Artists and Venues</h2>
+            </div>
             <fieldset>
                 <div className="form-group">
+                    <h3>Where are you playing?</h3>
                     <label htmlFor="locationId">Select a location </label>
                     <select 
                         className="form-control"
