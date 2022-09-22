@@ -7,10 +7,12 @@ import { EventCard } from "./EventCard.js"
 export const EventList = (props) => {
     const [ events, setEvents ] = useState([]);
     const history = useHistory()
+    const [ venues, setVenues ] = useState([])
 
     useEffect(() => {
         getEvents().then(data => setEvents(data))
     }, [])
+
 
     const delEvent = (eventId) => {
         deleteEvent(eventId)

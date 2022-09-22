@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+
+body {
+    color: #0a0200;
+    background-color: #c1aba6;
+}
+
+.home-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.home-content {
+    border: .5rem solid;
+    border-radius: 30px;
+    width: 40rem;
+    height: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px 10px 300px;
+    background-color: #f3e9e7;
+}
+
+.home-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 69pt;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 10px
+}
+
+.home-content h2 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group {
+    border: .5rem solid;
+    border-radius: 30px;
+    width: 38rem;
+    height: 10rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px 20px 300px;
+    background-color: #f3e9e7;
+}
+
+.form-group h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24pt;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 1rem
+}
+
+label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16pt;
+    margin-left: 0rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+select#locationId.form-control {
+    align-items: center;
+    justify-content: center;
+    margin-left: 15rem;
+    width: 120px;
+    margin-top: 1rem;
+}
+
+button#createBtn.btn.btn-primary {
+    align-items: center;
+    justify-content: center;
+    margin-left: 35rem;
+    font-size: 28pt;
+}
+
+

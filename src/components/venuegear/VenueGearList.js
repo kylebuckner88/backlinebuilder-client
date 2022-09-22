@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { getVenueGearList, getVenueGearByVenue } from "./VenueGearManager.js"
 import { VenueGearCard } from "./VenueGearCard.js"
 import { getVenueById } from "../venue/VenueManager.js"
-// import "./VenueGearList.css"
+import "./VenueGear.css"
 
 export const VenueGearList = (props) => {
     const history = useHistory();
@@ -40,16 +40,18 @@ export const VenueGearList = (props) => {
 
     return (
         <article className="venuegear">
-            <h2>{currentVenue.name}</h2>
+            <h1>{currentVenue.name}</h1>
             <h2>Available Backline Gear</h2>
-            {venuegearlist.map(venuegear =>
-                <VenueGearCard
-                key={venuegear.id}
-                venuegear={venuegear}
-                />
-            )}
-            <button type="create"
-            className="btn btn-primary"
+            <section className="venuegear-cards">
+                {venuegearlist.map(venuegear =>
+                    <VenueGearCard
+                    key={venuegear.id}
+                    venuegear={venuegear}
+                    />
+                )}
+            </section>
+            <button type="submit"
+            className="btn btn=primary"
             id="createBtn"
                 onClick={() => {
                     history.push(`/events/${currentVenue.id}/new`)

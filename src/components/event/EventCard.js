@@ -1,12 +1,14 @@
 import { React, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom"
-import { getEvents } from "./EventManager"
+// import { getVenueGearById } from "../venuegear/VenueGearManager";
 // import "./Event.css"
 
 
 export const EventCard = ({ event, delEvent }) => {
 
-    // const history = useHistory();
+    const history = useHistory();
+    // const [ venuegearlist, setVenueGearList ] = useState([])
+
 
     return (
         <div>

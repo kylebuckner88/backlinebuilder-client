@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { getVenues } from "./VenueManager.js"
 import { VenueCard } from "./VenueCard.js"
 import { getVenueByLocation } from "./VenueManager"
+import "./Venue.css"
 
 
 export const VenueList = (props) => {
@@ -12,9 +13,6 @@ export const VenueList = (props) => {
         
 
 
-    // useEffect(() => {
-    //     getVenues().then(data => setVenues(data))
-    // }, [])
 
     useEffect(() => {
         getVenueByLocation(locationId).then(data => setVenues(data))
@@ -26,14 +24,16 @@ export const VenueList = (props) => {
 
 
     return (
-        <article className="venues">
-            <h2>Venues</h2>
-            {venues.map(venue => 
-               <VenueCard
-                key={venue.id}
-                venue={venue}
-                />
-            )}
-        </article>
+        <div id="venues">
+            <h1>Venues</h1>
+            <section className="venue-cards">
+                {venues.map(venue => 
+                <VenueCard
+                    key={venue.id}
+                    venue={venue}
+                    />
+                )}
+            </section>
+        </div>
     )
 }
